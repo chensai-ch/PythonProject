@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 编程助手 · Lightweight Code Assistant</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <header class="topbar">
+        <div class="brand">
+            <div class="brand-mark">&lt;/&gt;</div>
+            <div class="brand-text">
+                <h1>AI 编程助手</h1>
+                <span class="brand-sub">Lightweight Code Assistant</span>
+            </div>
+        </div>
+        <nav class="modes" id="modes" role="tablist">
+            <button class="mode active" data-mode="explain" role="tab">解释代码</button>
+            <button class="mode" data-mode="bugs" role="tab">查找 Bug</button>
+            <button class="mode" data-mode="tests" role="tab">生成测试</button>
+            <button class="mode" data-mode="convert" role="tab">代码转语言</button>
+        </nav>
+    </header>
+
+    <main class="workspace">
+        <!-- 左侧:输入 -->
+        <section class="panel panel-input">
+            <div class="panel-head">
+                <h2>代码输入</h2>
+                <div class="panel-controls">
+                    <label class="field">
+                        <span>语言</span>
+                        <select id="language"></select>
+                    </label>
+                    <label class="field" id="target-field" hidden>
+                        <span>目标语言</span>
+                        <select id="target-language"></select>
+                    </label>
+                </div>
+            </div>
+            <textarea id="code-input" spellcheck="false"
+                placeholder="在此粘贴你的代码…&#10;&#10;def hello(name):&#10;    print(f'Hello, {name}!')"></textarea>
+            <div class="input-foot">
+                <span class="line-count" id="line-count">0 行 · 0 字符</span>
+                <button class="btn-primary" id="analyze-btn">
+                    <span class="btn-label">开始分析</span>
+                    <span class="spinner" hidden></span>
+                </button>
+            </div>
+        </section>
+
+        <!-- 右侧:输出 -->
+        <section class="panel panel-output">
+            <div class="panel-head">
+                <h2>分析结果</h2>
+                <span class="meta" id="result-meta"></span>
+            </div>
+            <div class="output-body" id="output">
+                <div class="placeholder">
+                    <div class="placeholder-icon">⚡</div>
+                    <p>选择模式,粘贴代码,点击「开始分析」</p>
+                    <small>支持解释 / 查 Bug / 生成测试 / 语言转换</small>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="statusbar">
+        <span id="status">就绪</span>
+        <span class="dot" id="status-dot"></span>
+    </footer>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
